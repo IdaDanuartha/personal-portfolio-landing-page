@@ -1,26 +1,50 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --main: #FD6F00;
+  --second: #1E1E1E;
+  --third: #F8F8F8;
+  --fourth: #424242;
+  --fiveth: #545454;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-main: var(--main);
+  --color-second: var(--second);
+  --color-third: var(--third);
+  --color-fourth: var(--fourth);
+  --color-fiveth: var(--fiveth);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1E1E1E;
+    --second: #ffffff;
+    --fiveth: #121212;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .swiper-pagination {
+    @apply !absolute !bottom-0;
+  }
+  .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    @apply !bg-main !w-[50px] !h-[12px];
+  }
+  .swiper-pagination .swiper-pagination-bullet {
+    @apply !bg-[#555] !duration-500 !rounded-full !w-[50px] !h-[12px];
+  }
 }
